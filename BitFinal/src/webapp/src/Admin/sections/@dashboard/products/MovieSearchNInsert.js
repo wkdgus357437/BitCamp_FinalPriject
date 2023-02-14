@@ -84,13 +84,17 @@ export default function MovieSearchNInsert() {
             'Access-Control-Allow-Origin': '*',
         },
     }).then((res) => {
-            if (res.data.results.length > 0) {
-                setSetQuery(res.data.results[0].id)
-            }
-            else {
-                alert("다시검색")
-            }
+        setSetQuery(res.data.results[0].id)
+            // if (res.data.results.length > 0) {
+            //     setSetQuery(res.data.results[0].id)
+            // }
+            // else {
+            //     alert("다시검색")
+            //     // window.location.reload();
+            // }
         }
+        // if~ else 하면 Movie List 들어가자마자 다시검색 alert 나옴 
+      
     )},[movieSearchData])
 
     useEffect(()=>{
