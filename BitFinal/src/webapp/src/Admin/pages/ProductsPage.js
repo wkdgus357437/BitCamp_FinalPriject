@@ -46,9 +46,17 @@ const movieDelete = (movieTitle)=> {
   // movie search
   const [adminMovieSearchKeyword , AdminMovieSearchKeyword] = useState('')
   const [adminMovieSearchOption, AdminMovieSearchOption ]= useState('movie_title')
+  
 
   const onAdminMovieSearch = (e) => {
     e.preventDefault();
+
+    //검색어 공백시 
+    if (adminMovieSearchKeyword.trim() === '') {
+      alert("검색어를 입력해주세요.");
+      return;
+    }
+
     axios.get('http://localhost:8080/movielist/adminMovieSearch',{
       params: {
         adminMovieSearchKeyword,

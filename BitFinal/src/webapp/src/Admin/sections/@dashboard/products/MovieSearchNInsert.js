@@ -36,6 +36,12 @@ export default function MovieSearchNInsert() {
     //네이버 영화 api
     const onSearch = () =>{
 
+        //검색어 공백시 
+        if (moviecdNum.trim() === '') {
+            alert("검색어를 입력해주세요.");
+            return;
+          }
+
         axios.get(url,{
             params:{query: moviecdNum,language: "ko"},
             headers: {
@@ -45,12 +51,15 @@ export default function MovieSearchNInsert() {
                 'Access-Control-Allow-Origin':'*',
                 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
             },
-         }).then(res => res.data.items.length === 0 ? alert("데이터 없음")|| setStatus(false)
+         })
+         .then(res => res.data.items.length === 0 ? alert("데이터 없음")|| setStatus(false)
                                                     : setMovieSearchData(res.data.items)||setStatus(true)
                 )
-
-
+        .catch(error => console.log(error))
     }
+
+    // -----------
+   
     useEffect(()=>{
         axios.get(url3,{
             params:{
@@ -61,7 +70,7 @@ export default function MovieSearchNInsert() {
         )
     },[movieSearchData])
 
-
+    // -----------
     useEffect(()=>{
         const url4 = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json';
         axios.get(url4,{
@@ -97,6 +106,8 @@ export default function MovieSearchNInsert() {
       
     )},[movieSearchData])
 
+     // -----------
+     
     useEffect(()=>{
         axios.get(url2, {
             params:{language: "ko"},
@@ -165,8 +176,7 @@ export default function MovieSearchNInsert() {
                 movie_release_end,movie_class,movie_agegrade,movie_score,movie_info_title,movie_info_title2,movie_info_type
                 ];
 
-
-
+         // 등록
          axios.post('http://localhost:8080/movielist/write',null,{
         params:{
             movie_title, movie_subtitle, movie_poster_url, movie_header_url, movie_already_released, movie_release_start,
