@@ -23,7 +23,6 @@ import lombok.Data;
 				 , allocationSize = 1
 )
 public class AdminBoardDTO {
-	//수정
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADMINBOARD_SEQ_GENERATOR")
 	@Column(name = "adminBoardSeq")
