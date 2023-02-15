@@ -24,7 +24,7 @@ export default function ProductsPage() {
   };
 
 
-// movie list
+// movie list  찾기 
 const [list, setList] = useState([]);
 useEffect(() => {
     axios.get('http://localhost:8080/movielist/admin_movie_list')
