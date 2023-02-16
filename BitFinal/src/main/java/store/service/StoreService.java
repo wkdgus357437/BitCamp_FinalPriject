@@ -58,6 +58,6 @@ public interface StoreService {
 	
 	//관리자 스토어 상품 검색	
 	public List<StoreDTO> adminStoreSearch(Map<String, String> map);
-	
+
 
 }

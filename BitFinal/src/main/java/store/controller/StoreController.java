@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.adminBoard.bean.AdminBoardDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.main.bitfinal.memberService.dto.UserRequestDTO;
 import com.main.bitfinal.memberService.memberEntity.User;

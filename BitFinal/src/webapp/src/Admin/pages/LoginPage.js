@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled} from '@mui/material/styles';
-import {Container, Typography} from '@mui/material';
+import {Container, Typography, TablePagination} from '@mui/material';
 // hooks
 import useResponsive from '../hooks/useResponsive';
 // components
@@ -43,19 +43,25 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function LoginPage(props) {
+export default function LoginPage() {
   const mdUp = useResponsive('up', 'md');
 
   const [adminStoreList, setAdminStoreList] =useState([])
   const [storeDel ,setStoreDel] = useState('')
+
+  const [stUpSeq1, setStUpSeq1] = useState('')
   
+  //---  상품 리스트
   useEffect(() => {
     axios
       .get('http://localhost:8080/store/getStoreList')
       .then((res) => {setAdminStoreList(res.data)})
       .catch((error) => console.log(error))
   }, []);
+// --- 
 
+
+// 상품 삭제
 const adminStoreDel = (storeDel) => {
   const storeSeq = adminStoreList.filter((item)=> item.store_seq !== storeDel)
   setAdminStoreList(storeSeq)
@@ -63,8 +69,12 @@ const adminStoreDel = (storeDel) => {
         .then(()=>{alert('삭제완료')})
         .catch(error => console.log(error))
 }
+// ----
 
 
+
+
+// --상품 검색
 const [adminStoreSearchKeyword, setAdminStoreSearchKeyword] = useState('')
 const [adminStoreSearchOption, setAdminStoreSearchOption]=useState('subject')
 
@@ -79,6 +89,7 @@ const onAdminStoreSearch = (e) => {
         .then(res => setAdminStoreList(res.data))
         .catch(err => console.log(err))
 }
+//-----
 
   return (
     <>
@@ -145,7 +156,9 @@ const onAdminStoreSearch = (e) => {
                 <td>
                 <button onClick={ () => { if (window.confirm(`${item.category} 카테고리의 ${item.subject} 상품을 삭제하시겠습니까?`)){ adminStoreDel(item.store_seq); }} } style={{all:'unset',color:'red',cursor:'pointer'}} >삭제</button>
                 </td>
+                
               </tr>
+              
               </>
             )
           })}

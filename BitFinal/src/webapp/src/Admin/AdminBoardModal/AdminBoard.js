@@ -296,7 +296,7 @@ const AdminBoard = () => {
                 </TableBody>
               </Table>
 
-          {/*  search  */}
+          {/*  search   test*/}
           <div id="adminBoardListForm" style={{width: '450px',margin:'30px', align:'left'}}>
            <form id="searchForm" style={{textAlign:'left',width:400}}>
               <input type="text" name="adminKeyword" value={adminKeyword} onChange={e => setAdminKeyword(e.target.value)}
