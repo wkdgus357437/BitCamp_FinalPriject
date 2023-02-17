@@ -13,8 +13,6 @@ import axios from 'axios';
 
 
 // ----------------------------------------------------------------------
-// 관리자 페이지 Store List 
-
 const StyledRoot = styled('div')(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     display: 'flex',
@@ -51,7 +49,7 @@ export default function LoginPage() {
 
   const [stUpSeq1, setStUpSeq1] = useState('')
   
-  //---  상품 리스트
+  //---  관리자 store 리스트
   useEffect(() => {
     axios
       .get('http://localhost:8080/store/getStoreList')
@@ -61,7 +59,7 @@ export default function LoginPage() {
 // --- 
 
 
-// 상품 삭제
+// 관리자 store 상품 삭제
 const adminStoreDel = (storeDel) => {
   const storeSeq = adminStoreList.filter((item)=> item.store_seq !== storeDel)
   setAdminStoreList(storeSeq)
@@ -70,9 +68,6 @@ const adminStoreDel = (storeDel) => {
         .catch(error => console.log(error))
 }
 // ----
-
-
-
 
 // --상품 검색
 const [adminStoreSearchKeyword, setAdminStoreSearchKeyword] = useState('')
@@ -156,7 +151,6 @@ const onAdminStoreSearch = (e) => {
                 <td>
                 <button onClick={ () => { if (window.confirm(`${item.category} 카테고리의 ${item.subject} 상품을 삭제하시겠습니까?`)){ adminStoreDel(item.store_seq); }} } style={{all:'unset',color:'red',cursor:'pointer'}} >삭제</button>
                 </td>
-                
               </tr>
               
               </>
