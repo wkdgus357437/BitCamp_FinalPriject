@@ -33,6 +33,10 @@ export default function MovieSearchNInsert() {
     const url1 = '../moviesearch/movie?api_key=574ef45c366822b07b3a7f5799a6b116';
     const url2 = `../movieapp/${setQuery}?api_key=574ef45c366822b07b3a7f5799a6b116`;
     const url3 = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json';
+    
+
+    // 검색 기능 및 데이터는 네이버 검색API, 영화진흥위원회API,  TMDB API 사용
+
     //네이버 영화 api
     const onSearch = () =>{
 
@@ -192,32 +196,36 @@ export default function MovieSearchNInsert() {
 
     }
 
-    /* movie_number=null, movie_title=null,
+    /* 
+        movie_number=null, movie_title=null,
         movie_subtitle=null, movie_poster_url=null,
         movie_header_url=null, movie_already_released=0,
         movie_release_start=null, movie_release_end=null, movie_class=null,
         movie_agegrade=null, movie_reserve_rate=null, movie_like=0, movie_totalspactators=null,
         movie_info_title=null, movie_info_title2=null, movie_info_type=null, movie_info_point=null
-         /*  String movie_number = page 이동할때 number부여로 페이지이동
-String movie_title = 영화제목 네이버
-String movie_subtitle = 영화 부제목 네이버
-String movie_poster_url = 전체영화, 영화소개에 들어가는 영화poster https://www.themoviedb.org/ poster_path
-String movie_header_url = 영화소개에 들어가는 background poster https://www.themoviedb.org/ backdrop_path
-int movie_already_released = 영화 개봉중/개봉예정을 구분 https://www.themoviedb.org/ status Released
-String movie_release_start = 영화개봉날짜 https://www.themoviedb.org/ release_date
-String movie_release_end = 영화개봉종료 https://www.themoviedb.org/ release_date+1month
-String movie_class = class로 나눠서 타입별 영화탭 구분. default
-String movie_agegrade = 영화나이제한 https://www.themoviedb.org/ adult
-int movie_like = 좋아요 갯수 (쓰지않을 예정이지만 추가는 해놓음)
-String movie_reserve_rate = 예매율 순위대로 리스트나열예정 // 예매테이블
-String movie_score = 영화소개부분의 영화평점 네이버 userRating
-String movie_ranking = 영화소개부분의 영화순위 score 값으로 순위
-String movie_totalspactators = 영화소개부분의 총관람인원 //ㅇㅖ매 횟수로 해야될듯함
-String movie_info_title = 영화소개부분의 영화소개 부분1 https://www.themoviedb.org/ overview
-String movie_info_title2 = 영화소개부분의 영화소개 부분2 https://www.themoviedb.org/ overview
---영화소개를 1,2로 나눈 이유는 각 들어가는 css가 다름--
-String movie_info_type = 영화소개부분의 영화 타입 https://www.themoviedb.org/
-String movie_info_point = 영화소개에 들어갈그래프의 일종.  데이터가있어야 그래프가 완성됨.  */
+        
+        String movie_number = page 이동할때 number부여로 페이지이동
+        String movie_title = 영화제목 네이버
+        String movie_subtitle = 영화 부제목 네이버
+        String movie_poster_url = 전체영화, 영화소개에 들어가는 영화poster https://www.themoviedb.org/ poster_path
+        String movie_header_url = 영화소개에 들어가는 background poster https://www.themoviedb.org/ backdrop_path
+        int movie_already_released = 영화 개봉중/개봉예정을 구분 https://www.themoviedb.org/ status Released
+        String movie_release_start = 영화개봉날짜 https://www.themoviedb.org/ release_date
+        String movie_release_end = 영화개봉종료 https://www.themoviedb.org/ release_date+1month
+        String movie_class = class로 나눠서 타입별 영화탭 구분. default
+        String movie_agegrade = 영화나이제한 https://www.themoviedb.org/ adult
+        int movie_like = 좋아요 갯수 (쓰지않을 예정이지만 추가는 해놓음)
+        String movie_reserve_rate = 예매율 순위대로 리스트나열예정 // 예매테이블
+        String movie_score = 영화소개부분의 영화평점 네이버 userRating
+        String movie_ranking = 영화소개부분의 영화순위 score 값으로 순위
+        String movie_totalspactators = 영화소개부분의 총관람인원 //ㅇㅖ매 횟수로 해야될듯함
+        String movie_info_title = 영화소개부분의 영화소개 부분1 https://www.themoviedb.org/ overview
+        String movie_info_title2 = 영화소개부분의 영화소개 부분2 https://www.themoviedb.org/ overview
+        --영화소개를 1,2로 나눈 이유는 각 들어가는 css가 다름--
+        String movie_info_type = 영화소개부분의 영화 타입 https://www.themoviedb.org/
+        String movie_info_point = 영화소개에 들어갈그래프의 일종.  데이터가있어야 그래프가 완성됨. 
+        
+    */
     return (
         <>
             <span style={{fontSize:13,color:'green'}}>영화 추가</span>
