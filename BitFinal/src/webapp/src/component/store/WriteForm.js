@@ -125,17 +125,17 @@ import axios from 'axios';
 
   const onReset = (e) => {
     e.preventDefault()
-
-    setForm({
-      category: '',
-      subject: '',
-      subSubject: '',
-      simpleContent: '',
-      content: '',
-      price: '',
-      country: '',
-      img: ''
-    })
+window.location.reload()
+    // setForm({
+    //   category: '',
+    //   subject: '',
+    //   subSubject: '',
+    //   simpleContent: '',
+    //   content: '',
+    //   price: '',
+    //   country: '',
+    //   img: ''
+    // })
   }
 
   const [selected, setSelected] = React.useState("");

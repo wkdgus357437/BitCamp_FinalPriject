@@ -257,7 +257,7 @@ import styles from '../../css/writeForm.module.css';
             <tr>
               <td width="140px" align="center" style={{fontSize:15,fontWeight:'bolder'}}>Imge</td>
               <td>
-                <input type="file" name='img' id ={img} value={img||''} onChange={e => readURL(e.target)}/>
+                <input type="file" name='img' onChange={e => readURL(e.target)}/>
               </td>
             </tr>
             <br/>
