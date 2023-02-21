@@ -63,7 +63,7 @@ export default function MovieSearchNInsert() {
     }
 
     // -----------
-   
+    //  영화 api
     useEffect(()=>{
         axios.get(url3,{
             params:{
@@ -75,6 +75,7 @@ export default function MovieSearchNInsert() {
     },[movieSearchData])
 
     // -----------
+    // 영화 api
     useEffect(()=>{
         const url4 = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json';
         axios.get(url4,{
@@ -89,6 +90,7 @@ export default function MovieSearchNInsert() {
 
 
     // 이미지 불러오기
+    // 영화 api
     useEffect(()=>{
     axios.get(url1, {
         params: {query: moviecdNum,language: "ko"},
@@ -111,7 +113,7 @@ export default function MovieSearchNInsert() {
     )},[movieSearchData])
 
      // -----------
-     
+    //  영화 api
     useEffect(()=>{
         axios.get(url2, {
             params:{language: "ko"},
