@@ -123,7 +123,23 @@ import axios from 'axios';
          .catch(error => console.log(error))
   }
 
-  const onReset = (e) => {
+const onReset = (e) => {
+  e.preventDefault() 
+  setForm({
+      category: '',
+      subject: '',
+      subSubject: '',
+      simpleContent: '',
+      content: '',
+      price: '',
+      country: '',
+      img: ''
+    })
+}
+
+
+
+  const onCloes = (e) => {
     e.preventDefault()
 window.location.reload()
     // setForm({
@@ -237,7 +253,9 @@ window.location.reload()
               <td colSpan='2' align='center'>
                 <button  style={{all:'unset',color:'blue',cursor:'pointer'}} onClick={ onWriteSubmit }>스토어등록</button>
                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <button style={{all:'unset',color:'red',cursor:'pointer'}} onClick={ onReset }>취소</button>
+               <button style={{all:'unset',color:'red',cursor:'pointer'}} onClick={ onReset }>다시 작성</button>
+               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <button style={{all:'unset',color:'red',cursor:'pointer'}} onClick={ onCloes }>취소</button>
               </td>
             </tr>
             <br/><br/>
