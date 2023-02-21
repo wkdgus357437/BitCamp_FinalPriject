@@ -48,15 +48,24 @@ public interface StoreDAO extends JpaRepository<StoreDTO, Long>{
 	@Query("select user from User user where user.username=:username")
 	public User getUser(@Param("username") String username);
 
+//	관리자 스토어 상품 삭제
 	@Transactional
 	@Modifying
 	@Query(value = "delete from storetable where store_seq=:store_seq",nativeQuery = true)
 	public void deleteByAdminStoreDel(@Param("store_seq") String store_seq);
 
+//	관리자 스토어 검색
 	@Query("select storeDTO from StoreDTO storeDTO where storeDTO.subject like '%' || :adminStoreSearchKeyword || '%'")
 	public List<StoreDTO> getAdminStoreSubject(@Param("adminStoreSearchKeyword") String adminStoreSearchKeyword);
 
+//	관리자 스토어 검색
+	
 	@Query("select storeDTO from StoreDTO storeDTO where storeDTO.content like '%' || :adminStoreSearchKeyword || '%'")
 	public List<StoreDTO> getAdminStoreContent(@Param("adminStoreSearchKeyword") String adminStoreSearchKeyword);
+
+//	관리자 스토어 상품 찾기
+	@Query("select storeDTO from StoreDTO storeDTO where storeDTO.store_seq=:store_seq")
+//	@Query(value= "select form storetable where store_seq=:store_seq",nativeQuery = true)
+	public Optional<StoreDTO> findBygetAdminStoreList(@Param("store_seq") int store_seq);
 
 }

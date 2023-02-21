@@ -168,5 +168,18 @@ public class StoreServiceImpl implements StoreService {
 		else 
 			return storeDAO.getAdminStoreContent(adminStoreSearchKeyword);
 	}
+
+	//	관리자 store 수정 전 데이터 불러오기
+	@Override
+	public Optional<StoreDTO> getAdminStoreList(int store_seq) {
+		return storeDAO.findBygetAdminStoreList(store_seq);
+	}
+
+	// 관리자 store  상품 수정 
+	@Override
+	public void storeUpdate(StoreDTO storeDTO) {
+		storeDAO.save(storeDTO);
+		
+	}
 	
 }

@@ -59,5 +59,11 @@ public interface StoreService {
 	//관리자 스토어 상품 검색	
 	public List<StoreDTO> adminStoreSearch(Map<String, String> map);
 
+	//관리자 store 수정 전 데이터 불러오기
+	public Optional<StoreDTO> getAdminStoreList(int store_seq);
+
+	//	관리자 store 상품 수정
+	public void storeUpdate(StoreDTO storeDTO);
+
 
 }

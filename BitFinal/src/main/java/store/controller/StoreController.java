@@ -87,7 +87,7 @@ public class StoreController {
 	      // String filePath = session.getServletContext().getRealPath("/public/storage");
 	      // System.out.println("실제폴더 : " + filePath);
 	      //가상폴더 (filePath = 각자의 스토리지 폴더로 지정해야 상품 올라감
-	      String filePath = "/Users/jojanghyeon/java/springBoot/workspace/BitFinal/src/webapp/public/storage";
+	      String filePath = "/Users/jojanghyeon/BitCamp_FinalPriject/workspace/BitFinal/src/webapp/public/storage";
 	      String fileName = img.getOriginalFilename();
 
 	      File file = new File(filePath, fileName);
@@ -206,4 +206,17 @@ public class StoreController {
 		return storeService.adminStoreSearch(map);
 	}
 	
+//	관리자 store 수정 전 데이터 불러오기
+	@GetMapping(path="getAdminStoreList")
+	public Optional <StoreDTO> getAdminStoreList(@RequestParam int store_seq){
+		return storeService.getAdminStoreList(store_seq);
+	}
+
+//	관리자 store 상품 수정
+	@PutMapping(path="storeUpdate")
+	public void storeUpdate(@ModelAttribute StoreDTO storeDTO) {
+		storeService.storeUpdate(storeDTO);
+	}
+	
 }
+	
