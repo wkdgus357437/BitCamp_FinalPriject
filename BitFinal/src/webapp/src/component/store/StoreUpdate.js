@@ -35,10 +35,10 @@ import styles from '../../css/writeForm.module.css';
   const [countryDiv, setCountryDiv] = useState('')
 
 
+  // 여기가 문제임 ...
   useEffect (()=> {
-    axios.get(`http://localhost:8080/store/getStoreList?store_seq=${props.props}`)
+    axios.get(`http://localhost:8080/store/getAdminStoreList?store_seq=${props.props}`)
           .then(res => {
-            
             setForm({
               store_seq :res.data.store_seq,
               category: res.data.category,
@@ -51,8 +51,14 @@ import styles from '../../css/writeForm.module.css';
             })
           })
           .catch(error => console.log(error))
-
   },[])
+  
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8080/store/getStoreList?store_seq=${props.props}`)
+  //     .then((res) => {
+  //       setForm(res.data)})
+  //     .catch((error) => console.log(error))
+  // }, []);
 
   const onInput = (e) => {
     const { name, value } = e.target
@@ -166,7 +172,7 @@ import styles from '../../css/writeForm.module.css';
 
   return (
     
-    <div className='ststststs'>
+    <div className='ststststs' value={store_seq}>
        <br/>
       <h3 style={{textAlign:'center'}}>
         <Link to='/store'>
@@ -175,7 +181,7 @@ import styles from '../../css/writeForm.module.css';
         &nbsp;&nbsp;
             <span className='stostosto' style={{textAlign:'right',verticalAlign:'middle'}}>스토어 제품 수정</span>
       </h3>
-      <form className={ styles.writeForm } style={{maxWidth:800, textAlign:'center'}} >
+      <form className={ styles.writeForm } style={{maxWidth:800, textAlign:'center'}}value={store_seq} >
 
         <select onChange={ onInput } name="category" style={{maxWidth:600, textAlign:'center'}} id={category} value={category}>
           <option>----- 카테고리를 선택해주세요 -----</option>
@@ -186,7 +192,7 @@ import styles from '../../css/writeForm.module.css';
         </select> 
 
         {/* <table border="1" > */}
-        <table id="adSt" value={store_seq}>
+        <table id="adSt">
           <thead>
           <br/><br/>
             <tr>

@@ -160,6 +160,8 @@ const AdminBoard = () => {
     }]);
 
     const handleOpenMenu = (event) => {
+      // const aa = event.target.parentNode.id
+      // console.log(aa)
         setAdUpSeq(event.target.id)
         setOpen(event.currentTarget);
 

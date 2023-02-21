@@ -11,6 +11,7 @@ function StoreAdminBoardModalUpdatePage(props){
 
   const openModal = (e) => {
     // const seq = e.target.parentNode.id
+    // const seq = e.target.parentNode.id
     const seq = e.target.parentNode.id
     console.log(seq)
     setAdSt(seq)

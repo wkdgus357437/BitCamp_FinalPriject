@@ -84,11 +84,12 @@ const adminStoreDel = (storeDel) => {
 const [adUpseq,setAdUpSeq] = useState('')
 const [open,setOpen]=useState('')
 const handleOpenMenu = (event) => {
+  // const ss = event.target.parentNode.id
   const ss = event.target.parentNode.id
   console.log(ss)
   // setAdUpSeq(event.target.id)
-  setAdUpSeq(event.target.parentNode.id)
-
+  // setStUpSeq1(event.target.parentNode.id)
+  setStUpSeq1(event.target.id)
   setOpen(event.currentTarget);
 
 };
@@ -178,7 +179,9 @@ const onAdminStoreSearch = (e) => {
                 <button onClick={ () => { if (window.confirm(`${item.category} 카테고리의 ${item.subject} 상품을 삭제하시겠습니까?`)){ adminStoreDel(item.store_seq); }} } style={{all:'unset',color:'red',cursor:'pointer'}} >삭제</button>
                 </td>
                 <td id={item.store_seq} onClick={handleOpenMenu}><StoreAdminBoardModalUpdatePage id={item.store_seq} props={stUpSeq1}/></td>
+                
               </tr>
+              {/* onChange={e => setAdminStoreSearchKeyword(e.target.value)} */}
               
               </>
             )
