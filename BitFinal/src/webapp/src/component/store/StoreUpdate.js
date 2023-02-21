@@ -35,7 +35,7 @@ import styles from '../../css/writeForm.module.css';
   const [countryDiv, setCountryDiv] = useState('')
 
 
-  // 여기가 문제임 ...
+  //관리자 store 상품 수정 전 가져오기
   useEffect (()=> {
     axios.get(`http://localhost:8080/store/getAdminStoreList?store_seq=${props.props}`)
           .then(res => {
@@ -53,12 +53,6 @@ import styles from '../../css/writeForm.module.css';
           .catch(error => console.log(error))
   },[])
   
-  // useEffect(() => {
-  //   axios.get(`http://localhost:8080/store/getStoreList?store_seq=${props.props}`)
-  //     .then((res) => {
-  //       setForm(res.data)})
-  //     .catch((error) => console.log(error))
-  // }, []);
 
   const onInput = (e) => {
     const { name, value } = e.target
@@ -149,21 +143,6 @@ import styles from '../../css/writeForm.module.css';
          .catch(error => console.log(error))
   }
 
-  const onReset = (e) => {
-    e.preventDefault()
-
-    setForm({
-      category: '',
-      subject: '',
-      subSubject: '',
-      simpleContent: '',
-      content: '',
-      price: '',
-      country: '',
-      img: ''
-    })
-  }
-
   const onClose = () => {
     window.location.reload();
   }
@@ -181,7 +160,7 @@ import styles from '../../css/writeForm.module.css';
         &nbsp;&nbsp;
             <span className='stostosto' style={{textAlign:'right',verticalAlign:'middle'}}>스토어 제품 수정</span>
       </h3>
-      <form className={ styles.writeForm } style={{maxWidth:800, textAlign:'center'}}value={store_seq} >
+      <form className={ styles.writeForm } style={{maxWidth:800, textAlign:'center'}} value={store_seq} >
 
         <select onChange={ onInput } name="category" style={{maxWidth:600, textAlign:'center'}} id={category} value={category}>
           <option>----- 카테고리를 선택해주세요 -----</option>
@@ -257,7 +236,7 @@ import styles from '../../css/writeForm.module.css';
             <tr>
               <td width="140px" align="center" style={{fontSize:15,fontWeight:'bolder'}}>Imge</td>
               <td>
-                <input type="file" name='img' onChange={e => readURL(e.target)}/>
+                <input type="file" name='img'  onChange={e => readURL(e.target)}/>
               </td>
             </tr>
             <br/>
@@ -266,8 +245,6 @@ import styles from '../../css/writeForm.module.css';
               <td colSpan='2' align='center'>
                 <button  style={{all:'unset',color:'blue',cursor:'pointer'}} onClick={ onUpdateSubmit }>상품 수정</button>
                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <button style={{all:'unset',color:'red',cursor:'pointer'}} onClick={ onReset }>다시 작성</button>
-                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                 <button style={{all:'unset',color:'red',cursor:'pointer'}} onClick={ onClose }>취소</button>
               </td>
             </tr>
