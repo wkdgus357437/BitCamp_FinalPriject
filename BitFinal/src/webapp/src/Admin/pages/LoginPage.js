@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled} from '@mui/material/styles';
-import {Container, Typography, TablePagination} from '@mui/material';
+import {Container, Typography, TablePagination,TableRow,TableCell} from '@mui/material';
+import {filter} from 'lodash';
 // hooks
 import useResponsive from '../hooks/useResponsive';
 // components
@@ -9,6 +10,7 @@ import Logo from '../components/logo';
 // sections
 import WriteForm from '../../component/store/WriteForm.js';
 import { useEffect, useState } from 'react';
+
 import axios from 'axios';
 import StoreAdminBoardModalUpdatePage from '../../component/store/StoreAdminBoardModalUpdatePage .js';
 
@@ -84,9 +86,10 @@ const adminStoreDel = (storeDel) => {
 }
 
 // ----
-const [adUpseq,setAdUpSeq] = useState('')
-const [open,setOpen]=useState('')
-const handleOpenMenu = (event) => {
+
+  const [adUpseq,setAdUpSeq] = useState('')
+  const [open,setOpen]=useState('')
+  const handleOpenMenu = (event) => {
   
   // 관리자 StoreAdminBoardModalUpdatePage의 seq 찾기 + 열기
   const ss = event.target.parentNode.id
@@ -95,7 +98,6 @@ const handleOpenMenu = (event) => {
   setOpen(event.currentTarget);
 
 };
-
 
 
 const [adminStoreSearchKeyword, setAdminStoreSearchKeyword] = useState('')
@@ -113,7 +115,6 @@ const onAdminStoreSearch = (e) => {
         .then(res => setAdminStoreList(res.data))
         .catch(err => console.log(err))
 }
-
 
   return (
     <>
@@ -165,6 +166,7 @@ const onAdminStoreSearch = (e) => {
           </tr>
         </thead>
         <tbody>
+        
           {adminStoreList.map((item) => {
             return (
               <>
@@ -185,9 +187,8 @@ const onAdminStoreSearch = (e) => {
                 <td id={item.store_seq} onClick={handleOpenMenu}>
                   <StoreAdminBoardModalUpdatePage id={item.store_seq} props={stUpSeq1}/>
                 </td>
-            
               </tr>
-              </>
+              </> 
             )
           })}
         </tbody>
