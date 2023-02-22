@@ -27,7 +27,9 @@ import styles from '../../css/writeForm.module.css';
     country: '',
     img: ''
   })
-  const {  store_seq,category, subject, subSubject, simpleContent, content, price, country, img } = form //비구조할당
+
+  //비구조할당
+  const {  store_seq,category, subject, subSubject, simpleContent, content, price, country, img } = form 
 
   const [subjectDiv, setSubjectDiv] = useState('')
   const [contentDiv, setContentDiv] = useState('')
@@ -66,6 +68,7 @@ import styles from '../../css/writeForm.module.css';
 
   const navigate = useNavigate()
 
+  // 관리자 store 이미지  
   const readURL = (input) => {
     var reader = new FileReader();
     reader.readAsDataURL(input.files[0]);
@@ -80,7 +83,7 @@ import styles from '../../css/writeForm.module.css';
     }
   }
 
-  
+  // 관리자 store 수정
   const onUpdateSubmit = (e) => {
     e.preventDefault()
 
@@ -90,6 +93,7 @@ import styles from '../../css/writeForm.module.css';
     setCountryDiv('')
 
     // const sw = 1
+    // 관리자 store 수정 유효성 검사
     let sw = 1
     if(!subject) {
       setSubjectDiv('제목을 작성하세요!')
@@ -108,6 +112,7 @@ import styles from '../../css/writeForm.module.css';
       sw = 0
     }
 
+    // 관리자 store 이미지 업로드
     if(sw === 1) {
         var formData = new FormData()
         
@@ -122,8 +127,7 @@ import styles from '../../css/writeForm.module.css';
             .then()
             .catch(error => console.log(error))
 
-        //두번째
-        
+        //관리자 stroe 상품 수정
         axios.put('http://localhost:8080/store/storeUpdate', null, { params: form })
              .then(() => {
                 alert('스토어에 품목이 수정되었어요!');
@@ -133,9 +137,8 @@ import styles from '../../css/writeForm.module.css';
     }
   }
 
+  // 관리자 store 중복검사 
   const isExistSubject = () => {
-    // console.log('seq='+(seq))
-    // console.log('subject='+(subject))
     axios.get(`http://localhost:8080/store/isExistSubject?subject=${subject}`)
          .then(res => {
             setSubjectDiv(res.data === 'non_exist' ? '등록 가능' : '등록 불가능')
@@ -143,6 +146,7 @@ import styles from '../../css/writeForm.module.css';
          .catch(error => console.log(error))
   }
 
+  // 취소
   const onClose = () => {
     window.location.reload();
   }
@@ -170,7 +174,6 @@ import styles from '../../css/writeForm.module.css';
           <option value="snack">스낵</option>
         </select> 
 
-        {/* <table border="1" > */}
         <table id="adSt">
           <thead>
           <br/><br/>

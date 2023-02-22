@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import StoreAdminBoardModalUpdatePage from '../../component/store/StoreAdminBoardModalUpdatePage .js';
 
+// 관리자 store 관련
 
 // ----------------------------------------------------------------------
 const StyledRoot = styled('div')(({ theme }) => ({
@@ -49,14 +50,15 @@ export default function LoginPage() {
   
   const [stUpSeq1, setStUpSeq1] = useState('')
   
-  //---  관리자 store 리스트
+  // 관리자 store 리스트 전품목 가져오기
   useEffect(() => {
     axios
       .get('http://localhost:8080/store/getStoreList')
       .then((res) => {setAdminStoreList(res.data)})
       .catch((error) => console.log(error))
   }, []);
-// --- 
+
+
 
 const StoreAdmin = adminStoreList.filter(item =>[{
     store_seq : item.store_seq,
@@ -80,25 +82,26 @@ const adminStoreDel = (storeDel) => {
         .then(()=>{alert('삭제완료')})
         .catch(error => console.log(error))
 }
+
 // ----
 const [adUpseq,setAdUpSeq] = useState('')
 const [open,setOpen]=useState('')
 const handleOpenMenu = (event) => {
-  // const ss = event.target.parentNode.id
+  
+  // 관리자 StoreAdminBoardModalUpdatePage의 seq 찾기 + 열기
   const ss = event.target.parentNode.id
   console.log(ss)
-  // setAdUpSeq(event.target.id)
-  // setStUpSeq1(event.target.parentNode.id)
   setStUpSeq1(event.target.id)
   setOpen(event.currentTarget);
 
 };
 
 
-// --상품 검색
+
 const [adminStoreSearchKeyword, setAdminStoreSearchKeyword] = useState('')
 const [adminStoreSearchOption, setAdminStoreSearchOption]=useState('subject')
 
+// 관리자 store 상품 리스트 검색
 const onAdminStoreSearch = (e) => {
   e.preventDefault();
   axios.get('http://localhost:8080/store/adminStoreSearch',{
@@ -110,7 +113,7 @@ const onAdminStoreSearch = (e) => {
         .then(res => setAdminStoreList(res.data))
         .catch(err => console.log(err))
 }
-//-----
+
 
   return (
     <>
@@ -132,13 +135,11 @@ const onAdminStoreSearch = (e) => {
             <br/>
             STORE
             </Typography>
-            {/* <img src="/assets/illustrations/illustration_login.png" alt="login" /> */}
             <img src="../../img/store22.png" alt="storeProduct" />
             <br/>
             <br/>
           </StyledSection>
         )}
-        {/* <Container maxWidth="s"> */}
         <Container maxWidth="s">
         <StyledSection style={{width:500,height:780}}>
           <WriteForm/>
@@ -176,13 +177,16 @@ const onAdminStoreSearch = (e) => {
                 <td align="center">{item.price}</td>
                 &nbsp;&nbsp;
                 <td>
-                <button onClick={ () => { if (window.confirm(`${item.category} 카테고리의 ${item.subject} 상품을 삭제하시겠습니까?`)){ adminStoreDel(item.store_seq); }} } style={{all:'unset',color:'red',cursor:'pointer'}} >삭제</button>
+                  <button onClick={ () => {
+                     if (window.confirm(`${item.category} 카테고리의 ${item.subject} 상품을 삭제하시겠습니까?`)){ adminStoreDel(item.store_seq); }} } 
+                     style={{all:'unset',color:'red',cursor:'pointer'}} > 삭제 </button>
                 </td>
-                <td id={item.store_seq} onClick={handleOpenMenu}><StoreAdminBoardModalUpdatePage id={item.store_seq} props={stUpSeq1}/></td>
-                
+
+                <td id={item.store_seq} onClick={handleOpenMenu}>
+                  <StoreAdminBoardModalUpdatePage id={item.store_seq} props={stUpSeq1}/>
+                </td>
+            
               </tr>
-              {/* onChange={e => setAdminStoreSearchKeyword(e.target.value)} */}
-              
               </>
             )
           })}
