@@ -250,9 +250,6 @@ const AdminBoard = () => {
                       >
                         {/* <TableCell padding="checkbox"> */}
                           {/* 지우지 않기 (칸 망가짐... ㅠㅠ) */}
-                          {/* <Checkbox
-                           checked={selectedAdmin} onChange={(event) => handleClick(event, adminBoardSeq)} /> */}
-                        {/* </TableCell> */}
 
                         <TableCell component="th" scope="row" padding="none" >
                           <Stack direction="row" alignItems="center" spacing={2}>
@@ -312,6 +309,7 @@ const AdminBoard = () => {
             </TableContainer>
           </Scrollbar>
 
+            {/* 페이지 */}
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
