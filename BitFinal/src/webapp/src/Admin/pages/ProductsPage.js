@@ -44,8 +44,8 @@ const movieDelete = (movieTitle)=> {
   }
 
   // movie search
-  const [adminMovieSearchKeyword , AdminMovieSearchKeyword] = useState('')
-  const [adminMovieSearchOption, AdminMovieSearchOption ]= useState('movie_title')
+  const [adminMovieSearchKeyword , setAdminMovieSearchKeyword] = useState('')
+  const [adminMovieSearchOption, setAdminMovieSearchOption ]= useState('movie_title')
   
 
   const onAdminMovieSearch = (e) => {
@@ -57,6 +57,7 @@ const movieDelete = (movieTitle)=> {
       return;
     }
 
+    // 이미 등록된 영화 검색
     axios.get('http://localhost:8080/movielist/adminMovieSearch',{
       params: {
         adminMovieSearchKeyword,
@@ -92,7 +93,7 @@ const movieDelete = (movieTitle)=> {
         <br/>
        <span style={{fontSize:13,color:'red'}}>등록된 영화 검색</span>
         <div>
-          <input type="text" name="adminMovieSearchKeyword" value={adminMovieSearchKeyword} onChange={e => AdminMovieSearchKeyword(e.target.value)} placeholder="Search Movies..." style={{borderColor:'grey',borderRadius:10}}
+          <input type="text" name="adminMovieSearchKeyword" value={adminMovieSearchKeyword} onChange={e => setAdminMovieSearchKeyword(e.target.value)} placeholder="Search Movies..." style={{borderColor:'grey',borderRadius:10}}
            />&nbsp;&nbsp;&nbsp;<Button onClick={onAdminMovieSearch} style={{color:'red'}}>Search</Button>
               &nbsp;&nbsp;&nbsp;<Button onClick={onAdminMovieReload}>back</Button>
         </div>

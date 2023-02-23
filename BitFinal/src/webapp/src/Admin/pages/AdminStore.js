@@ -89,13 +89,13 @@ const adminStoreDel = (storeDel) => {
 
   const [adUpseq,setAdUpSeq] = useState('')
   const [open,setOpen]=useState('')
-  const handleOpenMenu = (event) => {
   
-  // 관리자 StoreAdminBoardModalUpdatePage의 seq 찾기 + 열기
-  const ss = event.target.parentNode.id
-  console.log(ss)
-  setStUpSeq1(event.target.id)
-  setOpen(event.currentTarget);
+   // 관리자 StoreAdminBoardModalUpdatePage의 seq 찾기 + 열기
+  const handleOpenMenu = (event) => {
+    const ss = event.target.parentNode.id
+    console.log(ss)
+    setStUpSeq1(event.target.id)
+    setOpen(event.currentTarget);
 
 };
 
