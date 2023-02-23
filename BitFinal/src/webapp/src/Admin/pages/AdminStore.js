@@ -45,7 +45,7 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function LoginPage() {
+export default function AdminStore() {
   const mdUp = useResponsive('up', 'md');
 
   const [adminStoreList, setAdminStoreList] =useState([])
@@ -183,7 +183,6 @@ const onAdminStoreSearch = (e) => {
                      if (window.confirm(`${item.category} 카테고리의 ${item.subject} 상품을 삭제하시겠습니까?`)){ adminStoreDel(item.store_seq); }} } 
                      style={{all:'unset',color:'red',cursor:'pointer'}} > 삭제 </button>
                 </td>
-
                 <td id={item.store_seq} onClick={handleOpenMenu}>
                   <StoreAdminBoardModalUpdatePage id={item.store_seq} props={stUpSeq1}/>
                 </td>

@@ -28,7 +28,7 @@ const navConfig = [
   // },
   {
     title: 'Store',
-    path: '/adminindex/login',
+    path: '/adminindex/AdminStore',
     icon: icon('ic_cart'),
   }
 ];
