@@ -99,7 +99,7 @@ const adminStoreDel = (storeDel) => {
 
 };
 
-
+// 관리자 store 상품 리스트 검색
 const [adminStoreSearchKeyword, setAdminStoreSearchKeyword] = useState('')
 const [adminStoreSearchOption, setAdminStoreSearchOption]=useState('subject')
 
@@ -184,6 +184,7 @@ const onAdminStoreSearch = (e) => {
                      style={{all:'unset',color:'red',cursor:'pointer'}} > 삭제 </button>
                 </td>
                 <td id={item.store_seq} onClick={handleOpenMenu}>
+                  {/* 관리자 store 상품 수정 */}
                   <StoreAdminBoardModalUpdatePage id={item.store_seq} props={stUpSeq1}/>
                 </td>
               </tr>
