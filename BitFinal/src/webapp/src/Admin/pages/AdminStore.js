@@ -91,6 +91,7 @@ const adminStoreDel = (storeDel) => {
   const [open,setOpen]=useState('')
   
    // 관리자 StoreAdminBoardModalUpdatePage의 seq 찾기 + 열기
+  //  seq 확인
   const handleOpenMenu = (event) => {
     const ss = event.target.parentNode.id
     console.log(ss)
@@ -171,8 +172,7 @@ const onAdminStoreSearch = (e) => {
             return (
               <>
               <tr key={item.store_seq} style={{fontSize:13,border:'10px solid white' }} value={item.store_seq}>
-              {/* <td align="center">{item.store_seq}</td> */}
-                {/* <td >{item.store_seq}</td> */}
+              <input type="hidden" value={item.store_seq}/>{/* seq 확인*/}
                 <td align="center">{item.category}</td>
                 <td align="center">{item.subject}</td>
                 <td align="center">{item.content}</td>

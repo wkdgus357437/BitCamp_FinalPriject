@@ -73,7 +73,7 @@ const movieDelete = (movieTitle)=> {
     e.preventDefault();
     window.location.reload();
   }
-
+  
   return (
     <>
       <Helmet>
@@ -101,10 +101,10 @@ const movieDelete = (movieTitle)=> {
         <hr style={{width:330}}/>
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
-            <ProductSort />
+            {/* <ProductSort /> */}
+            <button style={{all:'unset', color:'black',cursor:'pointer'}}>등록 순</button>
           </Stack>
         </Stack>
-
         <ProductList products={PRODUCTS} list={list} movieDelete={movieDelete}/>
       </Container>
     </>
