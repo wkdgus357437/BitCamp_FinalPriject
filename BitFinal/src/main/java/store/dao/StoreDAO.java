@@ -64,7 +64,7 @@ public interface StoreDAO extends JpaRepository<StoreDTO, Long>{
 	public List<StoreDTO> getAdminStoreContent(@Param("adminStoreSearchKeyword") String adminStoreSearchKeyword);
 
 //	관리자 스토어 상품 찾기
-	@Query("select storeDTO from StoreDTO storeDTO where storeDTO.store_seq=:store_seq ORDER BY storeDTO.store_seq DESC")
+	@Query("select storeDTO from StoreDTO storeDTO where storeDTO.store_seq=:store_seq")
 //	@Query(value= "select form storetable where store_seq=:store_seq",nativeQuery = true)
 	public Optional<StoreDTO> findBygetAdminStoreList(@Param("store_seq") int store_seq);
 
