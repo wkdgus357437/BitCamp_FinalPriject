@@ -223,7 +223,7 @@ public class MovieServiceImpl implements MovieService {
 		return commentDAO.getCommentList(title);
 	}
 
-	//	관리자 페이지 이미 등록된 무비리스트 검색
+	//	관리자 페이지 이미 등록된 무비리스트 검색 "타이틀"
 	@Override
 	public List<MovieDTO> adminMovieSearch(Map<String, String> map) {
 		String adminMovieSearchOption = map.get("adminMovieSearchOption");
